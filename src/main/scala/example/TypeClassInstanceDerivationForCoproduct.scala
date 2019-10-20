@@ -5,6 +5,7 @@ import shapeless.HNil
 import shapeless.HList
 import shapeless.::
 import shapeless.Generic
+import scala.reflect.runtime.universe._
 
 object TypeClassInstanceDerivationForCoproduct extends App {
 
@@ -89,5 +90,6 @@ object TypeClassInstanceDerivationForCoproduct extends App {
       : AlignedCsvEncoder[T] =
     AlignedCsvEncoder.pure(csvEncoder.width)(x => csvEncoder.encode(gen.to(x)))
 
+  println(reify(AlignedCsvEncoder[Shape]))
   println(writeAlignedCsv(b))
 }

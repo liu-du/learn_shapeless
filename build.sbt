@@ -10,6 +10,7 @@ lazy val root = (project in file("."))
     name := "learn_shapeless",
     libraryDependencies ++= Seq(
       shapeless,
+      scalaReflect,
       scalaTest % Test
     )
   )
