@@ -3,23 +3,20 @@ package example
 import shapeless.{HList, ::, HNil, Coproduct, :+:, CNil, Inl, Inr}
 import shapeless.Generic
 
-object Hello extends App {
-  class MyProduct[T, H] {}
+object ProductAndCoproduct extends App {
 
-  println("hello")
-
-  case class IceCream(name: String, num: Int, inCone: Boolean)
+  println("-------- Product --------")
 
   val product1 = "Sunday" :: 1 :: false :: HNil
   val product2 = "Wed" :: 2 :: true :: HNil
   val products = product1.zip(product2)
-
   val products2 = ("Sunday" :: "Wed" :: HNil) :: (1 :: 2 :: HNil) :: (false :: true :: HNil) :: HNil
 
   println(product1.toString)
   println(products.toString)
   println(products2.toString)
 
+  case class IceCream(name: String, numCherries: Int, cone: Boolean)
   val iceCreamGen = Generic[IceCream]
 
   val iceCreamCase = IceCream("a", 2, true)
@@ -47,6 +44,5 @@ object Hello extends App {
   final case class Circle(radius: Double) extends Shape
 
   val gen = Generic[Shape]
-
   val rectGen = gen.to(Rectangle(1, 2))
 }

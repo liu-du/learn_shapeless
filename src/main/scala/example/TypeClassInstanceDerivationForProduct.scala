@@ -2,12 +2,7 @@ package example
 
 import shapeless.{HList, ::, HNil, Generic}
 
-object TypeClassInstanceDerivation extends App with Fixtures {
-
-  // base cases, encoders for primitive types: String, int and boolean
-  implicit val stringEncoder: CsvEncoder[String] = CsvEncoder.instance(str => List(str))
-  implicit val intEncoder: CsvEncoder[Int] = CsvEncoder.instance(int => List(int.toString))
-  implicit val booleanEncoder: CsvEncoder[Boolean] = CsvEncoder.instance(boolean => List(if (boolean) "yes" else "no"))
+object TypeClassInstanceDerivationForProduct extends App with Fixtures {
 
   // implicit val for HNil
   implicit val hNilEncoder: CsvEncoder[HNil] = CsvEncoder.instance(_ => Nil)
